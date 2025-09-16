@@ -1,0 +1,9 @@
+num1 = 47
+num2 = 102
+sum =  (int(num1 + int(num2)))
+sub = (int(num2 - int(num1)))
+mul = (int(sub * (sum)))
+print(f"{num1} + {num2} = {sum}")
+print(f"{num2} - {num1} = {sub}")
+print(f"{sum} * {sub} = {mul}")
+print(f"({num1} + {num2}) * ({num2} - {num1}) = {mul}")
