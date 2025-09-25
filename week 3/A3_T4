@@ -1,0 +1,20 @@
+print("Program starting")
+name = input("This is a program with simple menu, where you can choose which operation the program perfoms.\nBefore the menu, please insert your name: ")
+print("\nOptions:\n1 - Print welcome message\n2 - Print name backwards\n3 - Print first character\n4 - Show the amount of characters in the name\n0 - Exit")
+choice = input("Your choice: ")
+if choice == "1":
+    print(f"Welcome {name}")
+elif choice == "2":
+    backwards = name[::-1]
+    print(f'Your name backwards is "{backwards}"')
+elif choice == "3":
+    first = name[0]
+    print(f'The first character in name "{name}" is "{first}"')
+elif choice == "4":
+    length = len(name)
+    print(f'There are {length} characters in the name "{name}"')
+elif choice == "0":
+    print("Exiting...")
+else:
+    print("Unknown option.")
+print("\nProgram ending.")
