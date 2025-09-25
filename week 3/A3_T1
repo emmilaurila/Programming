@@ -1,0 +1,20 @@
+print("Program starting.")
+print("Insert two integers.")
+one = int(input("Insert first integer: "))
+two = int(input("Insert second integer: "))
+print("Comparing inserted integers.")
+if one==two:
+    print("Integers are the same")
+elif one > two:
+    print("First integer is greater.")
+elif one < two:
+    print("Second integer is greater.")
+print("\nAdding integers together")
+sum = (one + two)
+print(f"{one} + {two} = {sum}")
+print("\nChecking the parity of the sum...")
+if sum % 2 == 0:
+    print("The sum is even.")
+else:
+    print("The sum is odd.")
+print("Program ending.")
