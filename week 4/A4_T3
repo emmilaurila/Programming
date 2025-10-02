@@ -1,0 +1,12 @@
+print("Program starting.\n")
+starting = int(input("Insert starting value: "))
+stopping = int(input("Insert stopping value: "))
+print("\nStarting while-loop: ")
+current = starting
+while current <= stopping:
+    if current == stopping:
+        print(current, end="")
+    else:
+        print(current, end=" ")
+    current += 1
+print("\n\nProgram ending.")
