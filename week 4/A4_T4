@@ -1,0 +1,13 @@
+print("Program starting.\n")
+count = 0
+character = 0
+while True:
+    word = input("Insert word (empty stops): ")
+    if word == "":
+        break
+    count += 1
+    character += len(word)
+print("\nYou inserted:")
+print(f"- {count} words")
+print(f"- {character} characters")
+print("\nProgram ending.")
