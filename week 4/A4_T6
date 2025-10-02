@@ -1,0 +1,15 @@
+print("Program starting.")
+integer = int(input("Insert a positive integer: "))
+steps = 0
+while True:
+    print(integer, end="")
+    if integer == 1:
+        break
+    if integer % 2 == 0:
+        integer = integer // 2
+    else:
+        integer = 3 * integer + 1
+    print(" -> ", end="")
+    steps += 1
+print(f"\nSequence had {steps} total steps.")
+print("\nProgram ending.")
