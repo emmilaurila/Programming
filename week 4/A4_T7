@@ -1,0 +1,19 @@
+ print("Program starting.\n")
+print("Check multiplicative persistence.")
+integer = int(input("Insert an integer: "))
+steps = 0
+while integer >= 10:
+    digits = [int(digit) for digit in str(integer)]
+    print(digits[0], end="")
+    for digit in digits[1:]:
+        print(f" * {digit}", end="")
+    print(" =", end=" ")
+    result = 1
+    for digit in digits:
+        result *= digit
+    print(result)
+    integer = result
+    steps += 1
+print("No more steps.")
+print(f"\nThis program took {steps} step(s)")
+print("\nProgram ending.")
