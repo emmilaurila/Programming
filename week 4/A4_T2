@@ -1,0 +1,10 @@
+print("Program starting.\n")
+starting = int(input("Insert starting value: "))
+stopping = int(input("Insert stopping value: "))
+print("\nStarting for-loop:")
+for i in range(starting, stopping + 1):
+    if i == stopping:
+        print(i, end="")
+    else:
+        print(i, end=" ")
+print("\n\nProgram ending.")
