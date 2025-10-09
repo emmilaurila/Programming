@@ -1,0 +1,13 @@
+def frameWord(Pword):
+    length = len(Pword) + 4
+    print("*" * length)
+    print(f"* {Pword} *")
+    print("*" * length)
+def main():
+    print("Program starting.")
+    Pword = input("Insert word: ")
+    print()
+    frameWord(Pword)
+    print("\nProgram ending.")
+    return None
+main()
