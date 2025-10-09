@@ -1,0 +1,12 @@
+def askName():
+    name = input("Insert name: ")
+    return name
+def greetUser(PName):
+    print(f"Hello {PName}!")
+    return None
+def main():
+    print("Program starting.")
+    PName = askName()
+    greetUser(PName)
+    print("Program ending.")
+main()
