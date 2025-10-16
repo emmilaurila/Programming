@@ -1,0 +1,37 @@
+DELIMITER = ','
+def collectWords():
+    words = ""
+    while True:
+        word = input("Insert word(empty stops): ")
+        if word == "":
+            break
+        if words != "":
+            words += DELIMITER
+        words += word
+    return words
+def analyseWords(words_string):
+    wordcount = 0
+    charcount = 0
+    length = 0
+    i = 0
+    while i < len(words_string):
+        if words_string[i] == DELIMITER:
+            wordcount += 1
+            charcount += length
+            length = 0
+        else:
+            length += 1
+        i += 1
+    if length > 0:
+        wordcount += 1
+        charcount += length
+    Avg = charcount / wordcount if wordcount > 0 else 0
+    print(f"- {wordcount} Words")
+    print(f"- {charcount} Characters")
+    print("- {:.2f} Average word length".format(Avg))
+def main():
+    print("Program starting.")
+    words = collectWords()
+    analyseWords(words)
+    print("Program ending.")
+main()
