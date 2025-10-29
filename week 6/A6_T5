@@ -1,0 +1,28 @@
+SEPARATOR = ";"
+def readValues(filename) -> str:
+    file = open(filename, "r")
+    lines = file.read()
+    file.close()  
+    numbers = [line.strip() for line in lines] 
+    values = SEPARATOR.join(numbers)           
+    return values
+def analyseNumbers(valuestr) -> str:
+    numbers = [int(x) for x in valuestr.split(SEPARATOR)]  
+    count = len(numbers)
+    total = sum(numbers)
+    greatest = max(numbers)
+    avg = total / count if count > 0 else 0
+    result = f"{count}{SEPARATOR}{total}{SEPARATOR}{greatest}{SEPARATOR}{avg:.2f}"
+    return result
+def displayResults(filename, result_str):
+    print("#### Number analysis - START ####")
+    print(f'File "{filename}" results:')
+    print(f"Count{SEPARATOR}Sum{SEPARATOR}Greatest{SEPARATOR}Average")
+    print(result_str)
+    print("#### Number analysis - END ####")
+print("Program starting.")
+filename = input("Insert filename: ")
+numberstr = readValues(filename)
+resultstr = analyseNumbers(numberstr)
+displayResults(filename, resultstr)
+print("Program ending.")
