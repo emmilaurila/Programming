@@ -1,28 +1,49 @@
 SEPARATOR = ";"
-def readValues(filename) -> str:
-    file = open(filename, "r")
-    lines = file.read()
-    file.close()  
-    numbers = [line.strip() for line in lines] 
-    values = SEPARATOR.join(numbers)           
-    return values
-def analyseNumbers(valuestr) -> str:
-    numbers = [int(x) for x in valuestr.split(SEPARATOR)]  
-    count = len(numbers)
-    total = sum(numbers)
-    greatest = max(numbers)
-    avg = total / count if count > 0 else 0
-    result = f"{count}{SEPARATOR}{total}{SEPARATOR}{greatest}{SEPARATOR}{avg:.2f}"
-    return result
-def displayResults(filename, result_str):
+def readValues() -> str:
+    filename = input("Insert filename: ")
+    try:
+        with open(filename, "r") as file:
+            values = ""
+            for line in file:
+                line = line.strip()
+                if line:
+                    if not first:
+                        values += SEPARATOR
+                        values += line
+                        first = False
+        print(f'File "{filename}" results:')
+        return values
+    except FileNotFoundError:
+        print(f'Error: File "{filename}" not found.')
+        return ""
+def analyseNumbers(values: str) -> str:
+    numbers = []
+    current = ""
+    for character in values:
+        if character != SEPARATOR:
+            current += character
+        else:
+            numbers.append(int(current))
+            current = ""
+        if current:
+            numbers.append(int(current))
+        count = len(numbers)
+        total = sum(numbers)
+        greatest = max(numbers)
+        average = total / count
+        return f"{count};{total};{greatest};{average:.2f}"
+def displayResults(results: str):
+    print("Count;Sum;Greatest;Average")
+    print(results)
+    print()
+def main():
+    print("Program starting.")
     print("#### Number analysis - START ####")
-    print(f'File "{filename}" results:')
-    print(f"Count{SEPARATOR}Sum{SEPARATOR}Greatest{SEPARATOR}Average")
-    print(result_str)
+    values = readValues()
+    if values:
+        results = analyseNumbers(values)
+        displayResults(results)
     print("#### Number analysis - END ####")
-print("Program starting.")
-filename = input("Insert filename: ")
-numberstr = readValues(filename)
-resultstr = analyseNumbers(numberstr)
-displayResults(filename, resultstr)
-print("Program ending.")
+    print("Program ending.")
+if __name__ == "__main__":
+    main()
