@@ -4,13 +4,14 @@ def readValues() -> str:
     try:
         with open(filename, "r") as file:
             values = ""
+            first = True
             for line in file:
                 line = line.strip()
                 if line:
                     if not first:
                         values += SEPARATOR
-                        values += line
-                        first = False
+                    values += line
+                    first = False
         print(f'File "{filename}" results:')
         return values
     except FileNotFoundError:
