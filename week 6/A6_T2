@@ -1,14 +1,17 @@
-def main():
+def writefile(file, content) -> None:
+    filehandle = open(file, "w", encoding="UTF-8")
+    filehandle.write(content)
+    filehandle.close()
+    return None
+def main() -> None:
     print("Program starting.")
     first = input("Insert first name: ")
     last = input("Insert last name: ")
-    filename = input("Insert filename: ")
-    file = open(filename, "w")
-    file.write(first + '\n')
-    file.write(last + '\n')
-    file.write('\n')
-    file.close()
+    file = input("Insert filename: ")
+    content = "{}\n{}\n".format(first, last)
+    writefile(file, content)
+    writefile(file, first, last)
     print("Program ending.")
+
 if __name__ == "__main__":
     main()
-
