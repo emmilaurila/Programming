@@ -1,17 +1,29 @@
-def writefile(file, content) -> None:
-    filehandle = open(file, "w", encoding="UTF-8")
-    filehandle.write(content)
-    filehandle.close()
+def read(filename: str) -> str:
+    handler = open(filename, "r", encoding="UTF-8")
+    content = ""
+    row = handler.readline()
+    while row != "":
+        content += row
+        row = handler.readline()
+    handler.close()
+    return content
+def write(filename, content) -> None:
+    print("Writing into file '{}'".format(filename))
+    handler = open(filename, "w", encoding="UTF-8")
+    handler. write(content)
+    handler.close()
     return None
 def main() -> None:
     print("Program starting.")
-    first = input("Insert first name: ")
-    last = input("Insert last name: ")
-    file = input("Insert filename: ")
-    content = "{}\n{}\n".format(first, last)
-    writefile(file, content)
-    writefile(file, first, last)
+    print("This program can copy a file.")
+    filename = input("Insert source filename: ")
+    destination = input("Insert destination filename: ")
+    content = read(filename)
+    print(f"Reading file '{filename}' content.")
+    print("File conteny ready in memory.")
+    write(destination, content)
+    print("Copying operation complete.")
     print("Program ending.")
-
+    return None
 if __name__ == "__main__":
     main()
