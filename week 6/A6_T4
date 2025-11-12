@@ -1,34 +1,36 @@
-def main():
-    print("Program starting.")
-    print("This program analyses a list of names from a file.")
-    filename = input("Insert file name to read:")
-    print(f'Reading names from "{filename}".')
+def read(filename):
     file = open(filename, "r")
-    lines = file.read()
+    lines = file.readlines()
     file.close()
     names = []
     for line in lines:
-        line = line.strip()
+        if len(line) > 0 and line[-1] == '\n':
+            line = line[:-1]
         if line != "":
-            names.append(line)
+            parts = line.split(';')
+            for name in parts:
+                if name != "":
+                    names.append(name)
+    return names
+def main() -> None:
+    print("Program starting.")
+    print("This program analyses a list of names from a file.")
+    filename = input("Insert filename to read: ")
+    print(f'Reading names from "{filename}".')
+    names = read(filename)
     print("Analysing names...")
+    print("Analysis complete!") 
     count = len(names)
-    if count > 0:
-        length = []
-        for name in names:
-            length.append(len(name))
-            short = min(length)
-            long = max(length)
-            avg = sum(length) / count
-    else:
-        short = long = avg = 0
-    print("Analysis complete!")
-    print("#### REPORT BEGIN ####")
+    length = [len(name) for name in names]
+    short = min(length)
+    long = max(length)
+    avg = sum(length) / count
     print(f"Name count - {count}")
     print(f"Shortest name - {short} chars")
     print(f"Longest name - {long} chars")
     print(f"Average name - {avg:.2f} chars")
     print("#### REPORT END ####")
     print("Program ending.")
-if __file__ == "__main__":
+    return None
+if __name__ == "__main__":
     main()
